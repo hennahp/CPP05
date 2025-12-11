@@ -3,13 +3,20 @@
 int main(void)
 {
     std::cout << PURPLE << "----- Creating Bureaucrat and Form -----" << RESET << std::endl;
-    Bureaucrat b1("Alice", 42);
-    Form f1("TopSecret", 50, 30);
+    try
+    {
+        Bureaucrat b1("Alice", 42);   
+        Form f1("TopSecret", 50, 30);
 
-    b1.signForm(f1);
-    b1.signForm(f1);
+        b1.signForm(f1);
+        b1.signForm(f1);
 
-    Bureaucrat b2("Bob", 100);
-    b2.signForm(f1);
+        Bureaucrat b2("Bob", 100);
+        b2.signForm(f1);
+    }
+    catch(const std::exception &e)
+    {
+        std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
+    }
     return 0;
 }
