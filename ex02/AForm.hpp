@@ -1,7 +1,20 @@
 #ifndef AFORM_HPP
 #define AFORM_HPP
 
-#include "Bureaucrat.hpp"
+#include <fstream> 
+#include <string>
+#include <exception>
+#include <iostream>
+
+#define RESET   "\033[0m"
+#define RED     "\033[31m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define BLUE    "\033[34m"
+#define ORANGE  "\033[38;5;208m"
+#define PURPLE  "\033[35m"
+
+class Bureaucrat;
 
 class AForm
 {
@@ -10,6 +23,9 @@ class AForm
         bool _isSigned;
         const int _gradeToSign;
         const int _gradeToExecute;
+
+    protected:
+        void checkExecutable(const Bureaucrat &executor) const;
 
     public:
         AForm();
@@ -38,7 +54,14 @@ class AForm
             public:
                 const char* what() const throw();
         };
+
+        class FormNotSignedException : public std::exception
+        {
+            public:
+                const char* what() const throw();
+        };
 };
 
 std::ostream &operator<<(std::ostream &out, const AForm &obj);
+
 #endif

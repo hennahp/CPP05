@@ -4,8 +4,7 @@
 #include <string>
 #include <exception>
 #include <iostream>
-
-class Form;  
+#include "AForm.hpp"
 
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
@@ -34,7 +33,8 @@ class Bureaucrat
         void incrementGrade();
         void decrementGrade();
 
-        void signForm(Form &form) const;
+        void signForm(AForm &form) const;
+        void executeForm(AForm const &form) const;
 
         class GradeTooHighException : public std::exception
         {

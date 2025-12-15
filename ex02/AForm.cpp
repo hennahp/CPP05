@@ -1,4 +1,5 @@
 #include "AForm.hpp"
+#include "Bureaucrat.hpp"
 
 AForm::AForm() : _name("Default"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150)
 {
@@ -62,6 +63,14 @@ void AForm::beSigned(const Bureaucrat &bureaucrat)
     _isSigned = true;
 }
 
+void AForm::checkExecutable(const Bureaucrat &executor) const
+{
+    if(!getIsSigned())
+        throw FormNotSignedException();
+    if(executor.getGrade() > _gradeToExecute)
+        throw GradeTooLowException();
+}
+
 const char* AForm::GradeTooHighException::what() const throw()
 {
     return "AForm Grade is too high!";
@@ -70,6 +79,11 @@ const char* AForm::GradeTooHighException::what() const throw()
 const char* AForm::GradeTooLowException::what() const throw()
 {
     return "AForm Grade is too low!";
+}
+
+const char* AForm::FormNotSignedException::what() const throw()
+{
+    return "AForm is not signed!";
 }
 
 std::ostream &operator<<(std::ostream &out, const AForm &obj)
