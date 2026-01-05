@@ -1,5 +1,5 @@
 # include "RobotomyRequestForm.hpp"
-# include <cstdlib>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm() :AForm("RobotomyRequestForm", 72, 45), _target("default")
 {
@@ -39,4 +39,9 @@ void RobotomyRequestForm::execute(const Bureaucrat &executor) const
          std::cout << GREEN << _target << " has been robotomized successfully!" << RESET << std::endl;
     else
         std::cout << RED << "Robotomy failed on " << _target << "!" << RESET << std::endl;
+}
+
+AForm* RobotomyRequestForm::create(const std::string &target)
+{
+    return new RobotomyRequestForm(target);
 }
