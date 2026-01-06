@@ -7,8 +7,11 @@ int main(void)
     {
         Bureaucrat b1("Alice", 42);   
         Form f1("TopSecret", 50, 30);
+        std::cout << b1 << std::endl;
+        std::cout << f1 << std::endl;
 
         b1.signForm(f1);
+        std::cout << f1 << std::endl;
         b1.signForm(f1);
 
         Bureaucrat b2("Bob", 100);
