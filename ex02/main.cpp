@@ -6,7 +6,7 @@
 /*   By: hparveen <hparveen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 09:52:19 by hparveen          #+#    #+#             */
-/*   Updated: 2026/01/06 09:52:20 by hparveen         ###   ########.fr       */
+/*   Updated: 2026/01/06 10:30:20 by hparveen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int main()
 
     std::cout << PURPLE << "----- Creating Bureaucrats -----" << RESET << std::endl;
     Bureaucrat bob("Bob", 150);
+    Bureaucrat steve("Steve", 138);
     Bureaucrat alice("Alice", 1);
 
     std::cout << PURPLE << "\n----- Creating Forms -----" << RESET << std::endl;
@@ -38,6 +39,9 @@ int main()
     alice.signForm(shrub);
     alice.signForm(robot);
     alice.signForm(pardon);
+    steve.signForm(robot);
+    steve.signForm(pardon);
+    steve.signForm(shrub);
 
     std::cout << PURPLE << "\n----- Executing Forms -----" << RESET << std::endl;
     alice.executeForm(shrub);
