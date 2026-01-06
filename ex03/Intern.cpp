@@ -42,6 +42,6 @@ AForm *Intern::makeForm(std::string const &formName, std::string const &target)
             return creators[i](target);
         }
     }
-    std::cout << "Intern couldn't create form because form name is invalid." << formName << std::endl;
+    std::cout << "Intern couldn't create form because form name is invalid." << std::endl;
     return NULL;
 }
